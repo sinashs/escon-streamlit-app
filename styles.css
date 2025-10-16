@@ -1,0 +1,202 @@
+/* Wide layout for 50” displays */
+.block-container { padding-top: .1rem; padding-bottom: .8rem; max-width: 26000px; }
+.project-card { 
+    background: #ffffff;
+    padding: 1px 1px;
+    border: 1.5px solid #d0d0d0;              /* stronger visible border */
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* soft shadow */
+    margin-bottom: 10px;
+    transition: all 0.2s ease-in-out;      /* smooth hover effect */
+}
+
+/* Optional: subtle hover effect */
+.project-card:hover {
+    border-color: #999;                                 /* darker border */
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);          /* deeper shadow */
+    transition: all 0.2s ease-in-out;                   /* smooth animation */
+}
+
+/* Compact variant (used in inner sections) */
+.project-card.compact {
+    border: 1px solid #e0e0e0;
+    box-shadow: none;
+    background: #ffffff;
+}
+
+.project-card h4 { 
+    margin:0; 
+    font-size:1.7rem; 
+    letter-spacing:-.2px; 
+    font-weight:600; 
+    text-align:center; }
+
+.compact { 
+    font-size: 0.80rem; 
+    line-height:1.15; 
+}
+.title-center { text-align:center; }
+
+/* Pills */
+.pill { color:#fff; padding:1px 1px; border-radius:12px; text-align:center; font-weight:700;
+        box-shadow:0 1px 4px rgba(0,0,0,.12); }
+.pill .label { font-size:12px; opacity:.9; display:block; }
+.pill .value { font-size:12px; }
+.pill-yes { background:#198754; }
+.pill-no  { background:#dc3545; }
+
+/* Section wrapper for FP + Notes */
+.project-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* space between FP and Notes */
+}
+
+/* Fabrication Progress box */
+.fp-number {
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 6px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+/* Notes container */
+.notes-box {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #fafafa;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #333;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    margin-bottom: 8px;
+}
+
+
+/* Footer styling */
+.footer {
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.6;
+}
+
+.footer div:nth-child(1) {
+    font-size: 1.0rem; /* Biggest - top line */
+    font-weight: 700;
+}
+
+.footer div:nth-child(2) {
+    font-size: 0.9rem; /* Medium - middle line */
+    font-weight: 600;
+}
+
+.footer div:nth-child(3) {
+    font-size: 0.8rem; /* Smallest - bottom line */
+    color: #555;
+}
+
+/* Border around the entire status pill section */
+.status-section {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fdfdfd;
+    padding: 1px 1px;
+    margin: 1px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* Make Streamlit metrics smaller */
+[data-testid="stMetricValue"] {
+    font-size: 0.9rem !important;       /* smaller number text */
+    font-weight: 600 !important;
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 0.75rem !important;      /* smaller label */
+    color: #555 !important;
+}
+
+/* Center align text inside project details */
+.center-text {
+    text-align: center;
+}
+
+/* Make the expander header ("Project Details") smaller — covers multiple Streamlit versions */
+.streamlit-expanderHeader,
+.streamlit-expanderHeader p,
+.st-expander .st-expander__header,
+[data-testid="stExpander"] [data-testid="stExpanderHeader"],
+[data-testid="stExpander"] details > summary {
+  font-size: 0.15rem !important;
+  font-weight: 600 !important;
+  color: #444 !important;
+  line-height: 1.2 !important;
+}
+
+/* Optional: tighten header padding a bit */
+.st-expander .st-expander__header,
+[data-testid="stExpander"] details > summary {
+  padding: 4px 8px !important;
+}
+
+/* Project title styling */
+.project-title {
+    font-size: 1.0rem;         /* larger font */
+    font-weight: 900;          /* boldest weight */
+    text-transform: uppercase; /* ensure uppercase in case Python doesn’t */
+    color: #1a1a1a;
+    text-align: center;
+    letter-spacing: -0.5px;
+    margin-bottom: 4px;
+}
+
+/* Installation Dates styling */
+.install-dates {
+    font-size: 0.9rem;         /* smaller than title */
+    font-weight: 800;
+    color: #333;
+    text-align: center;
+}
+
+/* optional: subtle divider style you already use */
+hr.custom-divider { margin-top: 1px;    /* Adjust the top margin */
+                    margin-bottom: 1px;  /* Adjust the bottom margin */
+                    border-top: 2px solid #ccc; /* Optional: customize line color and thickness */
+                    background-color: #f0f2f6; /* Match Streamlit background */}
+
+
+.small-space {
+    margin-top: 0.001px;
+}
+
+[data-baseweb="select"] {
+    margin-top: 4px;
+    font-size: 0.8rem;
+}
+
+
+/* Status pill spacing */
+
+
+
+.pill {
+    padding: 6px 6px;
+    border-radius: 20px;
+    font-weight: 600;
+    color: #fff;
+    margin: 0px; /* small inner spacing between pills */
+}
+
+.pill-yes {
+    background-color: #4CAF50; /* green */
+}
+
+.pill-no {
+    background-color: #f44336; /* red */
+}
