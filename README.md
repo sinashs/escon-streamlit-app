@@ -145,7 +145,7 @@ pip install -U streamlit pandas duckdb plotly
 
 ### 2) Run locally
 ```bash
-streamlit run app_w_uploader_V1.py
+streamlit run app.py
 ```
 
 ### 3) Upload data
@@ -184,5 +184,3 @@ Use the sidebar uploader to select a `.csv` or `.xlsx` file. The app renders thr
 **Tech Stack:** Python, Streamlit, Pandas, DuckDB, CSS  
 **Purpose:** To streamline project monitoring and improve visibility across construction operations.  
 **Impact:** Delivered an automated, interactive BI tool that replaced static spreadsheets with a live visual dashboard accessible to project managers and executives.
-# escon-streamlit-app
-Escon Streamlit Dashboard
