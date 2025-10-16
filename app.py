@@ -333,54 +333,54 @@ for i in range(0, n, 3):
 
     # --- Column 1 : GREEN ---
     with c1:
-        with stylable_container(
-                key=f"sc_green_{i}",
-                css_styles="""
-                    {
-                        width: 100%;
-                        box-sizing: border-box;
+        if i < n:
+            with stylable_container(
+                    key=f"sc_green_{i}",
+                    css_styles="""
+                        {
+                            width: 100%;
+                            box-sizing: border-box;
 
-                        /* Make it bigger */
-                        padding: 20px 18px;     /* more inner space */
-                        min-height: 260px;      /* taller container */
-                        margin: 10px 6px;       /* more outer space */
+                            /* Make it bigger */
+                            padding: 20px 18px;     /* more inner space */
+                            min-height: 260px;      /* taller container */
+                            margin: 10px 6px;       /* more outer space */
 
-                        /* keep your look */
-                        background-color: #e8f5e9;
-                        border-radius: 12px;
-                        border: 1px solid #a5d6a7;
-                    }
-                """
-            ):
-        
-            if i < n:
+                            /* keep your look */
+                            background-color: #e8f5e9;
+                            border-radius: 12px;
+                            border: 1px solid #a5d6a7;
+                        }
+                    """
+                ):
                 render_project_card(df.iloc[i], i)
 
     # --- Column 2 : YELLOW ---
     with c2:
-        with stylable_container(
-                key=f"sc_yellow_{i+1}",
-                css_styles="""
-                    {
-                        width: 100%;
-                        box-sizing: border-box;
+        if i + 1 < n:
+            with stylable_container(
+                    key=f"sc_yellow_{i+1}",
+                    css_styles="""
+                        {
+                            width: 100%;
+                            box-sizing: border-box;
 
-                        padding: 20px 18px;
-                        min-height: 260px;
-                        margin: 10px 6px;
+                            padding: 20px 18px;
+                            min-height: 260px;
+                            margin: 10px 6px;
 
-                        background-color: #fffde7;
-                        border-radius: 12px;
-                        border: 1px solid #ffe082;
-                    }
-                """
-            ):
-            if i + 1 < n:
+                            background-color: #fffde7;
+                            border-radius: 12px;
+                            border: 1px solid #ffe082;
+                        }
+                    """
+                ):
                 render_project_card(df.iloc[i + 1], i + 1)
 
     # --- Column 3 : BLUE ---
     with c3:
-        with stylable_container(
+            if i + 2 < n:
+                with stylable_container(
                 key=f"sc_blue_{i+2}",
                 css_styles="""
                     {
@@ -396,9 +396,8 @@ for i in range(0, n, 3):
                         border: 1px solid #90caf9;
                     }
                 """
-            ):
-            if i + 2 < n:
-                render_project_card(df.iloc[i + 2], i + 2)
+                                        ):
+                    render_project_card(df.iloc[i + 2], i + 2)
 
 
     st.markdown('<hr class="custom-divider">', unsafe_allow_html=True)
