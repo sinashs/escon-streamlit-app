@@ -124,7 +124,7 @@ pip install streamlit pandas duckdb plotly
 
 ### Run the App
 ```bash
-streamlit run app_w_uploader(V1).py
+streamlit run app.py
 ```
 
 ---
