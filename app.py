@@ -272,6 +272,7 @@ def render_project_card(proj: pd.Series, idx: int):
                             index=index,
                             key=key_name,
                             label_visibility="visible",
+                            help = full  # full label as tooltip
                         )
 
         
