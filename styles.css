@@ -1,45 +1,45 @@
 /* Wide layout for 50” displays */
-.block-container { padding-top: .1rem; padding-bottom: .8rem; max-width: 26000px; }
-.project-card { 
+.block-container { padding-top: .1rem; padding-bottom: .1rem; max-width: 2600px; }
+.project-details { 
     background: #ffffff;
     padding: 1px 1px;
     border: 1.5px solid #d0d0d0;              /* stronger visible border */
     border-radius: 12px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08); /* soft shadow */
-    margin-bottom: 10px;
+    margin-bottom: 1px;
     transition: all 0.2s ease-in-out;      /* smooth hover effect */
 }
 
 /* Optional: subtle hover effect */
-.project-card:hover {
+.project-details:hover {
     border-color: #999;                                 /* darker border */
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);          /* deeper shadow */
     transition: all 0.2s ease-in-out;                   /* smooth animation */
 }
 
 /* Compact variant (used in inner sections) */
-.project-card.compact {
+.project-details.compact {
     border: 1px solid #e0e0e0;
     box-shadow: none;
     background: #ffffff;
 }
 
-.project-card h4 { 
+.project-details h4 { 
     margin:0; 
-    font-size:1.7rem; 
+    font-size:1.0rem; 
     letter-spacing:-.2px; 
     font-weight:600; 
     text-align:center; }
 
 .compact { 
-    font-size: 0.80rem; 
-    line-height:1.15; 
+    font-size: 0.70rem; 
+    line-height:1.0; 
 }
-.title-center { text-align:center; }
+.title-center {text-align:center; }
 
 /* Pills */
-.pill { color:#fff; padding:1px 1px; border-radius:12px; text-align:center; font-weight:700;
-        box-shadow:0 1px 4px rgba(0,0,0,.12); }
+.pill { color:#fff; padding:1px 1px; border-radius:12px; text-align:center; font-weight:200;
+        box-shadow:0 1px 1px rgba(0,0,0,.12); }
 .pill .label { font-size:12px; opacity:.9; display:block; }
 .pill .value { font-size:12px; }
 .pill-yes { background:#198754; }
@@ -108,7 +108,7 @@
     background-color: #fdfdfd;
     padding: 1px 1px;
     margin: 1px 0;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,0.05);
 }
 
 /* Make Streamlit metrics smaller */
@@ -145,40 +145,58 @@
   padding: 4px 8px !important;
 }
 
-/* Project title styling */
-.project-title {
-    font-size: 1.0rem;         /* larger font */
-    font-weight: 900;          /* boldest weight */
-    text-transform: uppercase; /* ensure uppercase in case Python doesn’t */
-    color: #1a1a1a;
-    text-align: center;
-    letter-spacing: -0.5px;
-    margin-bottom: 4px;
+/* ===== Project Title Section ===== */
+.project-title-section {
+  background: #ffffff;              /* keep it neutral; container colors show around it */
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 1px 1px;
+  margin: 1px 0 1px;                /* small space from other blocks */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
 }
 
-/* Installation Dates styling */
-.install-dates {
-    font-size: 0.9rem;         /* smaller than title */
-    font-weight: 800;
-    color: #333;
-    text-align: center;
+.project-title {
+  font-size: .8rem;               /* larger than install dates */
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+  color: #1a1a1a;
+  text-align: center;
 }
+
+/* Optional: Installation Dates Section (smaller than title) */
+.install-dates-section {
+  background: #ffffff;
+  border: 1px solid #eef0f2;
+  border-radius: 10px;
+  padding: 6px 10px;
+  margin: 2px 0 8px;
+}
+
+.install-dates {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #333;
+  text-align: center;
+  line-height: 1.2;
+}
+
 
 /* optional: subtle divider style you already use */
-hr.custom-divider { margin-top: 1px;    /* Adjust the top margin */
-                    margin-bottom: 1px;  /* Adjust the bottom margin */
-                    border-top: 2px solid #ccc; /* Optional: customize line color and thickness */
+hr.custom-divider { margin-top: 0px;    /* Adjust the top margin */
+                    margin-bottom: 0px;  /* Adjust the bottom margin */
+                    border-top: 1px solid #ccc; /* Optional: customize line color and thickness */
                     background-color: #f0f2f6; /* Match Streamlit background */}
 
 
+/* ===== Spacers (between title and installation dates, etc.) ===== */
 .small-space {
-    margin-top: 0.001px;
+  display: block;       /* ensure it behaves like a block divider */
+  height: 6px;          /* actual vertical gap */
+  margin: 1px 0;        /* a little breathing room */
 }
 
-[data-baseweb="select"] {
-    margin-top: 4px;
-    font-size: 0.8rem;
-}
 
 
 /* Status pill spacing */
@@ -186,7 +204,7 @@ hr.custom-divider { margin-top: 1px;    /* Adjust the top margin */
 
 
 .pill {
-    padding: 6px 6px;
+    padding: 1px 1px;
     border-radius: 20px;
     font-weight: 600;
     color: #fff;
@@ -199,4 +217,14 @@ hr.custom-divider { margin-top: 1px;    /* Adjust the top margin */
 
 .pill-no {
     background-color: #f44336; /* red */
+}
+
+/* Force dropdown text to stay black */
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] div {
+    color: black !important;
+}
+[data-baseweb="select"] {
+    margin-top: 1px;
+    font-size: 0.8rem;
 }

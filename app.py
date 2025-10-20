@@ -16,26 +16,26 @@ st.set_page_config(page_title="Escon Builders Project Dashboard", layout="center
 
 # Load external CSS (single file, per instructions)
 CSS_PATH = "styles.css"
-DEFAULT_CSS = """
-/* Container width for big displays */
-.block-container { padding-top: 1rem; padding-bottom: 1rem; max-width: 2600px; }
-.project-card { background:#fff; padding:12px 14px; border-radius:12px; border:1px solid #ececf1;
-                box-shadow:0 1px 2px rgba(0,0,0,.04); margin-bottom:10px; }
-.project-card h4 { margin:0; font-size:1.15rem; letter-spacing:-.2px; font-weight:800; text-align:center; }
-.compact { line-height:1.15; }
-.title-center { text-align:center; }
-.pill { color:#fff; padding:10px 12px; border-radius:12px; text-align:center; font-weight:700;
-        box-shadow:0 1px 4px rgba(0,0,0,.12); }
-.pill .label { font-size:12px; opacity:.9; display:block; }
-.pill .value { font-size:18px; }
-.pill-yes { background:#198754; }    /* green */
-.pill-no  { background:#dc3545; }    /* red   */
-.fp-number { font-size:18px; font-weight:500; text-align:center; margin:6px 0 0; }
-.footer { text-align:center; margin-top:8px; font-size:0.9rem; }
-"""
+# DEFAULT_CSS = """
+# /* Container width for big displays */
+# .block-container { padding-top: 1rem; padding-bottom: 1rem; max-width: 2600px; }
+# .project-card { background:#fff; padding:12px 14px; border-radius:12px; border:1px solid #ececf1;
+#                 box-shadow:0 1px 2px rgba(0,0,0,.04); margin-bottom:10px; }
+# .project-card h4 { margin:0; font-size:1.15rem; letter-spacing:-.2px; font-weight:800; text-align:center; }
+# .compact { line-height:1.15; }
+# .title-center { text-align:center; }
+# .pill { color:#fff; padding:10px 12px; border-radius:12px; text-align:center; font-weight:700;
+#         box-shadow:0 1px 4px rgba(0,0,0,.12); }
+# .pill .label { font-size:12px; opacity:.9; display:block; }
+# .pill .value { font-size:18px; }
+# .pill-yes { background:#198754; }    /* green */
+# .pill-no  { background:#dc3545; }    /* red   */
+# .fp-number { font-size:18px; font-weight:500; text-align:center; margin:6px 0 0; }
+# .footer { text-align:center; margin-top:8px; font-size:0.9rem; }
+# """
 
 def load_css():
-    css_text = DEFAULT_CSS
+    #css_text = DEFAULT_CSS
     if os.path.exists(CSS_PATH):
         try:
             with open(CSS_PATH, "r", encoding="utf-8") as f:
@@ -102,8 +102,8 @@ def render_project_card(proj: pd.Series, idx: int):
     project_name = (proj.get('Project Name', '') or '').upper()  # force uppercase
     st.markdown(
         f"""
-        <div class='project-card compact'>
-            <div class='title-center project-title'>
+        <div class='project-title-section'>
+            <div class='project-title'>
                 {project_name}
             </div>
         </div>
@@ -116,8 +116,8 @@ def render_project_card(proj: pd.Series, idx: int):
     # --- Installation Dates (smaller text below) ---
     st.markdown(
         f"""
-        <div class='project-card compact'>
-            <div class='title-center install-dates'>
+        <div class='install-dates-section'>
+            <div class='install-dates'>
                 <b>Installation Dates:</b> {proj.get('Installation Dates','')}
             </div>
         </div>
@@ -135,7 +135,7 @@ def render_project_card(proj: pd.Series, idx: int):
         with c1:
             st.markdown(
                 f"""
-                <div class='project-card compact center-text'>
+                <div class='project-details compact center-text'>
                     <b>Address:</b><br>
                     {proj.get('Project Address','')}
                 </div>
@@ -146,7 +146,7 @@ def render_project_card(proj: pd.Series, idx: int):
         with c2:
             st.markdown(
                 f"""
-                <div class='project-card compact center-text'>
+                <div class='project-details compact center-text'>
                     <b>Contractor:</b><br>
                     {proj.get('General Contractor','')}
                 </div>
@@ -156,17 +156,17 @@ def render_project_card(proj: pd.Series, idx: int):
 
         # Row 2
         st.write(
-            f"<div class='project-card compact'><b> Contact:</b> {proj.get('Contact Person','')}</div>",
+            f"<div class='project-details compact'><b> Contact:</b> {proj.get('Contact Person','')}</div>",
             unsafe_allow_html=True
         )
         # Row 3
         st.write(
-            f"<div class='project-card compact'><b> Phone:</b> {proj.get('Phone Number','')}</div>",
+            f"<div class='project-details compact'><b> Phone:</b> {proj.get('Phone Number','')}</div>",
             unsafe_allow_html=True
         )
         # Row 4
         st.write(
-            f"<div class='project-card compact'><b> Email:</b> {proj.get('Email Address','')}</div>",
+            f"<div class='project-details compact'><b> Email:</b> {proj.get('Email Address','')}</div>",
             unsafe_allow_html=True
         )
         #Row 5
@@ -183,12 +183,12 @@ def render_project_card(proj: pd.Series, idx: int):
                 formatted_deadline = str(deadline_raw)  # if parsing fails, show as-is
 
         st.markdown(
-            f"<div class='project-card compact'><b>Deadline:</b> {formatted_deadline}</div>",
+            f"<div class='project-details compact'><b>Deadline:</b> {formatted_deadline}</div>",
             unsafe_allow_html=True
         )
             
     #status_pill_col = st.columns(1)[0]
-    status_pill_col = st.container()
+
     # with status_pill_col:
 
     #     # Status pills row (SUB, SD, C, MO, MA) with abbreviations + hover tooltips
@@ -206,39 +206,74 @@ def render_project_card(proj: pd.Series, idx: int):
     #                 st.markdown(pill_html(abbr, full, value), unsafe_allow_html=True)
     #     st.markdown("</div>", unsafe_allow_html=True)
     
-    
+
+    status_pill_col = st.container()
+
     with status_pill_col:
-        #st.markdown("<div class='status-section'>", unsafe_allow_html=True)
+        # Inject global CSS ONCE to force black text in the control and in the dropdown menu (BaseWeb portal)
+        st.markdown(
+            """
+            <style>
+            /* Control text & placeholder */
+            div[data-baseweb="select"] div,
+            div[data-baseweb="select"] span {
+                color: black !important;
+            }
+            /* Dropdown menu items (BaseWeb renders the menu in a portal) */
+            ul[role="listbox"] li,
+            div[data-baseweb="menu"] *,
+            div[role="listbox"] * {
+                color: black !important;
+            }
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+
         with st.container(border=True):
             s_cols = st.columns(5)
+
             for i, field in enumerate(STATUS_ABBR.keys()):
-                abbr, full = STATUS_ABBR[field]
-                current_val = proj.get(field, "")
-                options = ["", "Yes", "No"]  # Allow empty, yes, or no
-                default_index = options.index(current_val.capitalize()) if str(current_val).capitalize() in options else 0
-                
-            
+                full = STATUS_ABBR[field][1]
+                abrr = STATUS_ABBR[field][0]
+                safe_field = field.replace(" ", "_").replace("/", "_")
+                key_name = f"status_{idx}_{safe_field}"
+
+                options = ["Yes", "No"]
+                current = st.session_state.get(key_name, "")
+                index = options.index(current) if current in options else 0
+
+                # Color the container based on current value
+                sv = (current or "").strip().lower()
+                if sv == "yes":
+                    bg, bd, fg = "#b6e7a5", "#2e7d32", "#1b5e20"   # green theme
+                elif sv == "no":
+                    bg, bd, fg = "#f4b4b4", "#b71c1c", "#5d0000"   # red theme
+                else:
+                    bg, bd, fg = "#ffffff", "#d3d3d3", "#000000"   # neutral (fallback)
+
                 with s_cols[i]:
-                    # Selectbox for manual change
-                    selected_value = st.selectbox(
-                        label="",  # removed abbreviation label,
-                        options=options,
-                        index=default_index,
-                        key=f"status_{idx}_{field}",
-                        label_visibility="collapsed"
-                    )
+                    # NOTE: stylable_container uses 'css', not 'css_styles'
+                    with stylable_container(
+                        key=f"statuswrap-{idx}-{i}",
+                        css_styles=f"""
+                        {{
+                            background-color: {bg};
+                            border: 2px solid {bd};
+                            border-radius: 8px;
+                            padding: 1px 1px;
+                            margin-top: 1px;
+                        }}
+                        """
+                    ):
+                        selected_value = st.selectbox(
+                            label=abrr,                # keep your abbreviation label
+                            options=options,
+                            index=index,
+                            key=key_name,
+                            label_visibility="visible",
+                        )
 
-                    # Apply color dynamically based on selection
-                    if selected_value == "Yes":
-                        pill_html_code = f"<div class='pill pill-yes' title='{full}'><span class='label'>{abbr}</span><span class='value'>✅ Yes</span></div>"
-                    elif selected_value == "No":
-                        pill_html_code = f"<div class='pill pill-no' title='{full}'><span class='label'>{abbr}</span><span class='value'>❌ No</span></div>"
-                    else:
-                        pill_html_code = f"<div class='pill' style='background-color:#e0e0e0;color:#555;' title='{full}'><span class='label'>{abbr}</span><span class='value'>—</span></div>"
-
-                    st.markdown(pill_html_code, unsafe_allow_html=True)
-
-        #st.markdown("</div>", unsafe_allow_html=True)
         
     fp_notes_col = st.container()
     with fp_notes_col:
@@ -249,8 +284,8 @@ def render_project_card(proj: pd.Series, idx: int):
             fp = parse_progress(proj.get("Fabrication Progress"))
             #st.metric(label="FP", value=f"{fp}%")
             
-            st.markdown("<div class='project-card compact center-text'><b>FP: </b></div>", unsafe_allow_html=True)
-            st.markdown(f"<div class='project-card compact fp-number'>{fp}%</div>", unsafe_allow_html=True)
+            st.markdown("<div class='project-details compact center-text'><b>FP: </b></div>", unsafe_allow_html=True)
+            st.markdown(f"<div class='project-details compact fp-number'>{fp}%</div>", unsafe_allow_html=True)
 
         with right:
             # --- Notes section (always show full text) ---
@@ -342,9 +377,9 @@ for i in range(0, n, 3):
                             box-sizing: border-box;
 
                             /* Make it bigger */
-                            padding: 20px 18px;     /* more inner space */
+                            padding: 10px 10px;     /* more inner space */
                             min-height: 260px;      /* taller container */
-                            margin: 10px 6px;       /* more outer space */
+                            margin: 1px 1px;       /* more outer space */
 
                             /* keep your look */
                             background-color: #e8f5e9;
@@ -365,9 +400,9 @@ for i in range(0, n, 3):
                             width: 100%;
                             box-sizing: border-box;
 
-                            padding: 20px 18px;
+                            padding: 10px 10px;
                             min-height: 260px;
-                            margin: 10px 6px;
+                            margin: 1px 1px;
 
                             background-color: #fffde7;
                             border-radius: 12px;
@@ -387,9 +422,9 @@ for i in range(0, n, 3):
                         width: 100%;
                         box-sizing: border-box;
 
-                        padding: 20px 18px;
+                        padding: 10px 10px;
                         min-height: 260px;
-                        margin: 10px 6px;
+                        margin: 1px 1px;
 
                         background-color: #e3f2fd;
                         border-radius: 12px;
@@ -401,7 +436,6 @@ for i in range(0, n, 3):
 
 
     st.markdown('<hr class="custom-divider">', unsafe_allow_html=True)
-    st.empty()
 
 
 # ------------------------- Footer -------------------------   
