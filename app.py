@@ -380,14 +380,14 @@ n = len(df)
 #random.seed(st.session_state.get("color_seed", 42))
 # Define 8 professional, subtle dashboard color themes
 color_themes = [
-    {"bg": "#BDFDC2", "border": "#A5D6A7"},  # light green
-    {"bg": "#F9F198", "border": "#FFF176"},  # soft yellow
-    {"bg": "#B9E1FD", "border": "#90CAF9"},  # light blue
-    {"bg": "#F0C9F6", "border": "#CE93D8"},  # lavender
-    {"bg": "#BDF1F8", "border": "#80DEEA"},  # aqua
-    {"bg": "#F9D7A1", "border": "#FFCC80"},  # peach
-    {"bg": "#F5A59C", "border": "#FFAB91"},  # coral
-    {"bg": "#DCFFB5", "border": "#C5E1A5"},  # pale lime
+    {"bg": "#D2FFDA", "border": "#D2FFDA"},  # brighter soft green
+    {"bg": "#FFF9B2", "border": "#FFF9B2"},  # brighter pastel yellow
+    {"bg": "#C6E9FF", "border": "#C6E9FF"},  # brighter sky blue
+    {"bg": "#F6D6FB", "border": "#F6D6FB"},  # brighter lavender
+    {"bg": "#C8F7FF", "border": "#C8F7FF"},  # brighter aqua
+    {"bg": "#FFDDAE", "border": "#FFDDAE"},  # brighter peach
+    {"bg": "#FFB9AF", "border": "#FFB9AF"},  # brighter coral
+    {"bg": "#E0FFCA", "border": "#E0FFCA"},  # brighter pale lime
 ]
 
 # Assign a unique color to each project using modulo indexing
