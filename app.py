@@ -7,6 +7,8 @@ from datetime import datetime
 from io import BytesIO
 import warnings, os
 import sys
+import random
+import numpy as np
 
 
 warnings.filterwarnings("ignore")
@@ -375,6 +377,25 @@ if row_warnings:
 # ------------------------- Render Cards (3 per row) -------------------------
 n = len(df)
 
+#random.seed(st.session_state.get("color_seed", 42))
+# Define 8 professional, subtle dashboard color themes
+color_themes = [
+    {"bg": "#BDFDC2", "border": "#A5D6A7"},  # light green
+    {"bg": "#F9F198", "border": "#FFF176"},  # soft yellow
+    {"bg": "#B9E1FD", "border": "#90CAF9"},  # light blue
+    {"bg": "#F0C9F6", "border": "#CE93D8"},  # lavender
+    {"bg": "#BDF1F8", "border": "#80DEEA"},  # aqua
+    {"bg": "#F9D7A1", "border": "#FFCC80"},  # peach
+    {"bg": "#F5A59C", "border": "#FFAB91"},  # coral
+    {"bg": "#DCFFB5", "border": "#C5E1A5"},  # pale lime
+]
+
+# Assign a unique color to each project using modulo indexing
+# Example: project 0 → color 0, project 1 → color 1, ... project 7 → color 7, project 8 → color 0, etc.
+def get_theme(idx):
+    return color_themes[idx % len(color_themes)]
+
+
 st.markdown('<hr class="custom-divider">', unsafe_allow_html=True)
 for i in range(0, n, 3):
     c1, c2, c3 = st.columns(3)
@@ -382,10 +403,11 @@ for i in range(0, n, 3):
     # --- Column 1 : GREEN ---
     with c1:
         if i < n:
+            theme = get_theme(i)
             with stylable_container(
                     key=f"sc_green_{i}",
-                    css_styles="""
-                        {
+                    css_styles=f"""
+                        {{
                             width: 100%;
                             box-sizing: border-box;
 
@@ -395,10 +417,10 @@ for i in range(0, n, 3):
                             margin: 1px 1px;       /* more outer space */
 
                             /* keep your look */
-                            background-color: #e8f5e9;
+                            background-color: {theme['bg']};
                             border-radius: 12px;
-                            border: 1px solid #a5d6a7;
-                        }
+                            border: 1px solid {theme['border']};
+                        }}
                     """
                 ):
                 render_project_card(df.iloc[i], i)
@@ -406,10 +428,11 @@ for i in range(0, n, 3):
     # --- Column 2 : YELLOW ---
     with c2:
         if i + 1 < n:
+            theme = get_theme(i + 1)
             with stylable_container(
                     key=f"sc_yellow_{i+1}",
-                    css_styles="""
-                        {
+                    css_styles=f"""
+                        {{
                             width: 100%;
                             box-sizing: border-box;
 
@@ -417,10 +440,10 @@ for i in range(0, n, 3):
                             min-height: 260px;
                             margin: 1px 1px;
 
-                            background-color: #fffde7;
+                            background-color: {theme['bg']};
                             border-radius: 12px;
-                            border: 1px solid #ffe082;
-                        }
+                            border: 1px solid {theme['border']};
+                        }}
                     """
                 ):
                 render_project_card(df.iloc[i + 1], i + 1)
@@ -428,10 +451,11 @@ for i in range(0, n, 3):
     # --- Column 3 : BLUE ---
     with c3:
             if i + 2 < n:
+                theme = get_theme(i + 2)
                 with stylable_container(
                 key=f"sc_blue_{i+2}",
-                css_styles="""
-                    {
+                css_styles=f"""
+                    {{
                         width: 100%;
                         box-sizing: border-box;
 
@@ -439,10 +463,10 @@ for i in range(0, n, 3):
                         min-height: 260px;
                         margin: 1px 1px;
 
-                        background-color: #e3f2fd;
+                        background-color: {theme['bg']};
                         border-radius: 12px;
-                        border: 1px solid #90caf9;
-                    }
+                        border: 1px solid {theme['border']};
+                    }}
                 """
                                         ):
                     render_project_card(df.iloc[i + 2], i + 2)
