@@ -7,6 +7,7 @@ from datetime import datetime
 from io import BytesIO
 import warnings, os
 import sys
+from streamlit_elements import elements, mui, html
 
 
 warnings.filterwarnings("ignore")
@@ -238,9 +239,21 @@ def render_project_card(proj: pd.Series, idx: int):
                 abrr = STATUS_ABBR[field][0]
                 safe_field = field.replace(" ", "_").replace("/", "_")
                 key_name = f"status_{idx}_{safe_field}"
+                
+                # Extract the default value from the uploaded DataFrame
+                # (this comes from proj — a row in df)
+                default_value = str(proj.get(field, "")).strip().lower()
+                
+                # If the uploaded value isn't valid, fallback to empty
+                if default_value not in ["yes", "no"]:
+                    default_value = ""
+                    
+                # Initialize session state only if not already set
+                if key_name not in st.session_state:
+                    st.session_state[key_name] = default_value
 
                 options = ["Yes", "No"]
-                current = st.session_state.get(key_name, "")
+                current = st.session_state.get(key_name, default_value)
                 index = options.index(current) if current in options else 0
 
                 # Color the container based on current value
