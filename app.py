@@ -484,7 +484,7 @@ with cols:
         <div>Created by: <b>Sina Shariati</b>
         | Contact: <a href="https://www.linkedin.com/in/sina-shariati-5a26227a/" target="_blank">LinkedIn</a></div>
         <div>Business Intelligence Analyst @ Escon Builders</div>
-        <div>Copyright © 2025 | All rights reserved.</div>
+        <div>Copyright © 2026 | All rights reserved.</div>
     </div>
     """,
     unsafe_allow_html=True
