@@ -8,6 +8,9 @@ The **Escon Builders Project Dashboard** is an interactive web application built
 
 It reads data directly from **Excel or CSV** files and automatically transforms them into **beautiful, data-rich project cards** showing status indicators, fabrication progress, deadlines, and notes — all within an intuitive and responsive dashboard interface.
 
+## Live Dashboard
+[View the Streamlit Dashboard](https://escon-builder.streamlit.app/)
+
 ---
 
 ## ✨ Key Features
