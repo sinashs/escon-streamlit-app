@@ -1,10 +1,10 @@
-# 🏗️ Escon Builders Project Dashboard
+# 🏗️ Project Tracking Dashboard
 *A Streamlit-based Business Intelligence tool for construction project tracking.*
 
 ---
 
 ## 📘 Overview
-The **Escon Builders Project Dashboard** is an interactive web application built with **Python + Streamlit**, designed to help construction managers, engineers, and executives visualize and monitor multiple projects in one unified view.
+The **Project Tracking Dashboard** is an interactive web application built with **Python + Streamlit**, designed to help construction managers, engineers, and executives visualize and monitor multiple projects in one unified view.
 
 It reads data directly from **Excel or CSV** files and automatically transforms them into **beautiful, data-rich project cards** showing status indicators, fabrication progress, deadlines, and notes — all within an intuitive and responsive dashboard interface.
 
@@ -36,7 +36,7 @@ Each card presents:
 - Minimalist white card design with shadows and hover effects.
 - Bordered containers for progress and notes.
 - Responsive three-column layout that adapts to ultra-wide monitors.
-- Subtle color scheme based on Escon Builders’ branding.
+- Subtle color scheme based on client’s branding.
 
 ### 🔹 Interactive UX
 - Expandable “Project Details” section for each project.
@@ -175,14 +175,14 @@ Use the sidebar uploader to select a `.csv` or `.xlsx` file. The app renders thr
 ## 👤 Author
 
 **Sina Shariati**  
-📍 Business Intelligence Analyst at Escon Builders  
+📍 Business Intelligence Analyst  
 🔗 [LinkedIn Profile](https://www.linkedin.com/in/sina-shariati-5a26227a/)
 
 ---
 
 ## 🪶 Portfolio Summary
 
-**Project:** Escon Builders Project Dashboard  
+**Project:**  Project Tracking Dashboard  
 **Role:** Developer & Designer  
 **Tech Stack:** Python, Streamlit, Pandas, DuckDB, CSS  
 **Purpose:** To streamline project monitoring and improve visibility across construction operations.  
